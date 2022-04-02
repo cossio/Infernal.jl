@@ -13,12 +13,12 @@ Access [Infernal](http://eddylab.org/infernal/) commands from Julia.
 
 ## Installation
 
-This package is not registered.
+This package is registered.
 Install with:
 
 ```julia
 import Pkg
-Pkg.add(url="https://github.com/cossio/Infernal.jl")
+Pkg.add("Infernal")
 ```
 
 This package does not export any symbols.
