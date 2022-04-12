@@ -22,6 +22,3 @@ Pkg.add("Infernal")
 ```
 
 This package does not export any symbols.
-
-Currently supports Linux only.
-Infernal has binaries for Mac, which could be supported (PR welcome).
