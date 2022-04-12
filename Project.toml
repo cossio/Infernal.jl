@@ -4,7 +4,8 @@ authors = ["Andrea Di Gioacchino", "Jorge Fernandez-de-Cossio-Diaz <j.cossio.dia
 version = "0.1.0"
 
 [deps]
-Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+Infernal_jll = "5109d7c4-8f61-540a-bdd6-fb9d06080a8f"
 
 [compat]
 julia = "1.6"
+Infernal_jll = "1.1"
