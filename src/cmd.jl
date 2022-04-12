@@ -1,9 +1,11 @@
+import Infernal_jll
+
 """
     path(name)
 
 Path to Infernal binary `name`.
 """
-path(name::String) = joinpath(artifact"Infernal", "infernal-1.1.4-linux-intel-gcc", "binaries", name)
+path(name::String) = joinpath(Infernal_jll.artifact_dir, "bin", name)
 
 """
     cmd(name, [args...])

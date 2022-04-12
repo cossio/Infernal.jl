@@ -1,8 +1,0 @@
-[[Infernal]]
-arch = "x86_64"
-os = "linux"
-git-tree-sha1 = "672d01f66aef593490f77957a7de4080285821d4"
-
-    [[Infernal.download]]
-    url = "http://eddylab.org/infernal/infernal-1.1.4-linux-intel-gcc.tar.gz"
-    sha256 = "372b4ee045915c34e7ba0d7c16d019a4f495c895fbd01f1aff1acc0045fd5704"
