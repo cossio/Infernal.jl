@@ -1,7 +1,7 @@
 name = "Infernal"
 uuid = "4aa08641-d763-4623-9c5b-cef742500064"
 authors = ["Andrea Di Gioacchino", "Jorge Fernandez-de-Cossio-Diaz <j.cossio.diaz@gmail.com>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 Infernal_jll = "5109d7c4-8f61-540a-bdd6-fb9d06080a8f"
