@@ -1,0 +1,26 @@
+[[Infernal]]
+arch = "x86_64"
+git-tree-sha1 = "672d01f66aef593490f77957a7de4080285821d4"
+os = "linux"
+
+    [[Infernal.download]]
+    sha256 = "372b4ee045915c34e7ba0d7c16d019a4f495c895fbd01f1aff1acc0045fd5704"
+    url = "http://eddylab.org/infernal/infernal-1.1.4-linux-intel-gcc.tar.gz"
+
+[[Infernal]]
+arch = "x86_64"
+git-tree-sha1 = "2761d0011de2ed75279a6c99d3a1c9f3647c22eb"
+os = "macos"
+
+    [[Infernal.download]]
+    sha256 = "9378fd8c121deb57ff4be06093ca503fa8b27677fcce2fbc5e6feec47a1be59c"
+    url = "http://eddylab.org/infernal/infernal-1.1.4-macosx-intel.tar.gz"
+
+[[Infernal]]
+arch = "arm64"
+git-tree-sha1 = "2761d0011de2ed75279a6c99d3a1c9f3647c22eb"
+os = "macos"
+
+    [[Infernal.download]]
+    sha256 = "9378fd8c121deb57ff4be06093ca503fa8b27677fcce2fbc5e6feec47a1be59c"
+    url = "http://eddylab.org/infernal/infernal-1.1.4-macosx-intel.tar.gz"

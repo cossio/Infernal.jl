@@ -1,11 +1,13 @@
 name = "Infernal"
 uuid = "4aa08641-d763-4623-9c5b-cef742500064"
 authors = ["Andrea Di Gioacchino", "Jorge Fernandez-de-Cossio-Diaz <j.cossio.diaz@gmail.com>"]
-version = "0.1.1"
+version = "0.2.0"
 
 [deps]
-Infernal_jll = "5109d7c4-8f61-540a-bdd6-fb9d06080a8f"
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+HMMER_jll = "9a00dd6d-eebd-547e-8f34-c9aea159fd8a"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 
 [compat]
 julia = "1.6"
-Infernal_jll = "1.1"

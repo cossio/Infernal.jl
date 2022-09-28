@@ -1,5 +1,10 @@
 module Infernal
 
-include("cmd.jl")
+using Pkg: @artifact_str
+using DataFrames: DataFrame
+import CSV
+
+include("util.jl")
+include("cmalign.jl")
 
 end
