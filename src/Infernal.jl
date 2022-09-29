@@ -5,6 +5,7 @@ using DataFrames: DataFrame
 import CSV
 
 include("util.jl")
+include("cmfetch.jl")
 include("cmalign.jl")
 
 end

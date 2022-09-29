@@ -5,7 +5,8 @@ function cmalign(
     informat::Opt{AbstractString}=nothing,
     outformat::Opt{AbstractString}=nothing
 )
-    cmd = `$(infernal_binary("cmalign"))`
+    exe = infernal_binary("cmalign")
+    cmd = `$exe`
     glob && (cmd = `$cmd -g`)
     notrunc && (cmd = `$cmd --ntrunc`)
     isnothing(informat) || (cmd = `$cmd --informat $informat`)
