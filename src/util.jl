@@ -9,3 +9,12 @@ function infernal_binaries_dir()
 end
 
 infernal_binary(name) = joinpath(infernal_binaries_dir(), name)
+
+"""
+    gunzip(path)
+
+Decompress a gunzipped file.
+"""
+gunzip(file::String) = Gzip_jll.gzip() do gzip
+    run(`$gzip -d $file`)
+end
