@@ -11,11 +11,10 @@ import ..CM_FILE, ..RFAM_ID
     @test isfile(result.out)
     @test isfile(result.tfile)
     sequences = open(FASTX.FASTA.Reader, result.out) do reader
-        strs = FASTX.sequence.(reader)
-        no_inserts = map(strs) do str
-            filter(!islowercase, replace(str, '.' => ""))
+        map(FASTX.sequence.(reader)) do str
+            _str = filter(!islowercase, replace(str, '.' => ""))
+            LongRNA{4}(_str)
         end
-        LongRNA{4}.(no_inserts)
     end
     @test length(sequences) == 17
     @test allequal(length.(sequences))
