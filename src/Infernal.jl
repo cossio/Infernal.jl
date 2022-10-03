@@ -11,4 +11,6 @@ include("cmalign.jl")
 include("cmbuild.jl")
 include("cmemit.jl")
 
+include("esl_reformat.jl")
+
 end

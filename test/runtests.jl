@@ -34,13 +34,14 @@ gunzip(CM_FILE * ".gz")
 @test isfile(CM_FILE)
 
 @info "Downloading all seed alignments ..."
-const SEED_FILE = tempname()
-download("https://ftp.ebi.ac.uk/pub/databases/Rfam/$RFAM_VERSION/Rfam.seed.gz", SEED_FILE * ".gz")
-gunzip(SEED_FILE * ".gz")
-@test isfile(SEED_FILE)
+const ALL_SEEDS_FILE = tempname()
+download("https://ftp.ebi.ac.uk/pub/databases/Rfam/$RFAM_VERSION/Rfam.seed.gz", ALL_SEEDS_FILE * ".gz")
+gunzip(ALL_SEEDS_FILE * ".gz")
+@test isfile(ALL_SEEDS_FILE)
 
 @info "Extract seed alignment of $RFAM_ID ..."
-let stk = read_seed(SEED_FILE, RFAM_ID)
+const SEED_FILE = tempname()
+let stk = read_seed(ALL_SEEDS_FILE, RFAM_ID)
     open(SEED_FILE, "w") do io
         for line in stk
             write(io, line * '\n')
@@ -62,3 +63,5 @@ module cmfetch_tests include("cmfetch.jl") end
 module cmalign_tests include("cmalign.jl") end
 module cmbuild_tests include("cmbuild.jl") end
 module cmemit_tests include("cmemit.jl") end
+
+module esl_reformat_tests include("esl_reformat.jl") end
