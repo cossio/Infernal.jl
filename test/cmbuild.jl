@@ -1,8 +1,9 @@
 using Test: @test, @testset
-using Infernal: cmbuild
-import ..SEED_FILE
+using Infernal: cmbuild, esl_afetch
+import ..RFAM_SEED
 
 @testset "cmbuild" begin
-    results = cmbuild(SEED_FILE)
+    seed = esl_afetch(RFAM_SEED, "RF00162")
+    results = cmbuild(seed.out)
     @test isfile(results.cmout)
 end

@@ -12,5 +12,6 @@ include("cmbuild.jl")
 include("cmemit.jl")
 
 include("esl_reformat.jl")
+include("esl_afetch.jl")
 
 end
