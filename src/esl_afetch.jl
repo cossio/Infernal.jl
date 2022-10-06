@@ -4,6 +4,8 @@ function esl_afetch(
     exe = infernal_binary("esl-afetch")
     cmd = `$exe`
     out = tempname()
-    run(`$cmd -o $out $msafile $key`)
-    return (; out)
+    log = tempname()
+    err = tempname()
+    run(pipeline(`$cmd -o $out $msafile $key`; stdout=log, stderr=err, append=false))
+    return (; out, log, err)
 end
