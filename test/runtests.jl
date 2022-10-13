@@ -37,3 +37,4 @@ module cmfetch_tests include("cmfetch.jl") end
 module cmalign_tests include("cmalign.jl") end
 module cmbuild_tests include("cmbuild.jl") end
 module cmemit_tests include("cmemit.jl") end
+module cmsearch_tests include("cmsearch.jl") end

@@ -11,6 +11,7 @@ include("cmalign.jl")
 include("cmbuild.jl")
 include("cmemit.jl")
 include("cmcalibrate.jl")
+include("cmsearch.jl")
 
 include("esl_reformat.jl")
 include("esl_afetch.jl")
