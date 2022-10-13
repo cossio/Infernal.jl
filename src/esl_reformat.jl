@@ -6,6 +6,8 @@ function esl_reformat(
     cmd = `$exe`
     isnothing(informat) || (cmd = `$cmd --informat $informat`)
     out = tempname()
-    run(`$cmd -o $out $format $seqfile`)
-    return (; out)
+    stdout = tempname()
+    stderr = tempname()
+    run(pipeline(`$cmd -o $out $format $seqfile`; stdout, stderr))
+    return (; out, stdout, stderr)
 end
