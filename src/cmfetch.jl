@@ -1,6 +1,8 @@
 function cmfetch(cmfile::AbstractString, id::AbstractString)
     exe = infernal_binary("cmfetch")
     out = tempname()
-    run(`$exe -o $out $cmfile $id`)
-    return (; out)
+    stdout = tempname()
+    stderr = tempname()
+    run(pipeline(`$exe -o $out $cmfile $id`; stdout, stderr))
+    return (; out, stdout, stderr)
 end
