@@ -6,4 +6,6 @@ import ..RFAM_SEED
     seed = esl_afetch(RFAM_SEED, "RF00162")
     result = esl_reformat("AFA", seed.out)
     @test isfile(result.out)
+    @test isfile(result.stdout)
+    @test isfile(result.stderr)
 end

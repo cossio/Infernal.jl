@@ -9,6 +9,8 @@ import ..CM_FILE, ..RFAM_ID
     cm = cmfetch(CM_FILE, RFAM_ID).out
     result = cmemit(cm; aligned=true, outformat="AFA", N)
     @test isfile(result.out)
+    @test isfile(result.stdout)
+    @test isfile(result.stderr)
     @test isfile(result.tfile)
     sequences = open(FASTX.FASTA.Reader, result.out) do reader
         map(FASTX.sequence.(reader)) do str
