@@ -6,4 +6,6 @@ import ..RFAM_SEED
     seed = esl_afetch(RFAM_SEED, "RF00162")
     results = cmbuild(seed.out)
     @test isfile(results.cmout)
+    @test isfile(results.stdout)
+    @test isfile(results.stderr)
 end
