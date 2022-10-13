@@ -1,6 +1,10 @@
 function cmcalibrate(cmfile::AbstractString)
     exe = infernal_binary("cmcalibrate")
     cmd = `$exe`
-    run(`$cmd $cmfile`)
-    return nothing
+
+    stdout = tempname()
+    stderr = tempname()
+
+    run(pipeline(`$cmd $cmfile`; stdout, stderr, append=false))
+    return (; stdout, stderr)
 end
