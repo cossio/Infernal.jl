@@ -6,6 +6,8 @@ import ..CM_FILE, ..RFAM_ID, ..FULL_FASTA_FILE
     cm = cmfetch(CM_FILE, RFAM_ID).out
     result = cmalign(cm, FULL_FASTA_FILE)
     @test isfile(result.out)
+    @test isfile(result.stdout)
+    @test isfile(result.stderr)
     @test isfile(result.sfile)
     @test isfile(result.tfile)
     df = cmalign_parse_sfile(result.sfile)

@@ -15,9 +15,10 @@ function cmalign(
     out = tempname()
     tfile = tempname()
     sfile = tempname()
-    run(`$cmd --tfile $tfile --sfile $sfile -o $out $cmfile $seqfile`)
-
-    return (; out, tfile, sfile)
+    stdout = tempname()
+    stderr = tempname()
+    run(pipeline(`$cmd --tfile $tfile --sfile $sfile -o $out $cmfile $seqfile`; stdout, stderr, append=false))
+    return (; out, stdout, stderr, tfile, sfile)
 end
 
 function cmalign_parse_sfile(path::AbstractString)
