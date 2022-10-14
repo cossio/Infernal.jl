@@ -11,7 +11,14 @@ function cmsearch(
     out = tempname()
     stdout = tempname()
     stderr = tempname()
+    tblout = tempname()
+    A = tempname()
 
-    run(pipeline(`$cmd -o $out $cmfile $seqfile`; stdout, stderr, append=false))
-    return (; out, stdout, stderr)
+    run(
+        pipeline(
+            `$cmd -o $out -A $A --tblout $tblout $cmfile $seqfile`;
+            stdout, stderr, append=false
+        )
+    )
+    return (; out, stdout, stderr, A, tblout)
 end
