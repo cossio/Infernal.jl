@@ -1,7 +1,7 @@
 name = "Infernal"
 uuid = "4aa08641-d763-4623-9c5b-cef742500064"
 authors = ["Andrea Di Gioacchino", "Jorge Fernandez-de-Cossio-Diaz <j.cossio.diaz@gmail.com>"]
-version = "0.3.1-DEV"
+version = "0.3.2-DEV"
 
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
