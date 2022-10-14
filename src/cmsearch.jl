@@ -1,12 +1,13 @@
 function cmsearch(
     cmfile::AbstractString, seqfile::AbstractString;
-    toponly::Bool=false, bottomonly::Bool=false
+    toponly::Bool=false, bottomonly::Bool=false, notrunc::Bool=false
 )
     exe = infernal_binary("cmsearch")
     cmd = `$exe`
 
     toponly && (cmd = `$cmd --toponly`)
     bottomonly && (cmd = `$cmd --bottomonly`)
+    notrunc && (cmd = `$cmd --notrunc`)
 
     out = tempname()
     stdout = tempname()
