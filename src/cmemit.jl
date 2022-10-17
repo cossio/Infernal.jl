@@ -14,5 +14,3 @@ function cmemit(
     run(pipeline(`$cmd -N $N --exp $exp --tfile $tfile -o $out $cmfile`; stdout, stderr))
     return (; out, stdout, stderr, tfile)
 end
-
-#cmemit -N 10000 -o "$DATA/$RF.enone.emit.exp1.afa" --exp 1 -a --outformat AFA "$DATA/$RF.enone.cm"
