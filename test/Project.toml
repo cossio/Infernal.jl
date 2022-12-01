@@ -4,4 +4,8 @@ Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
 FASTX = "c2308a5c-f048-11e8-3e8a-31650f418d12"
 Gzip_jll = "be1be57a-8558-53c3-a7e5-50095f79957e"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+Rfam = "38c5b72b-a3f0-437e-9f79-f3da4655de63"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[compat]
+Rfam = "2.0.1"
