@@ -3,12 +3,14 @@ function cmalign(
     seqfile::AbstractString;
     glob::Bool=false, notrunc::Bool=false,
     informat::Opt{AbstractString}=nothing,
-    outformat::Opt{AbstractString}=nothing
+    outformat::Opt{AbstractString}=nothing,
+    matchonly::Bool =false
 )
     exe = infernal_binary("cmalign")
     cmd = `$exe`
     glob && (cmd = `$cmd -g`)
     notrunc && (cmd = `$cmd --ntrunc`)
+    matchonly && (cmd = `$cmd --matchonly`)
     isnothing(informat) || (cmd = `$cmd --informat $informat`)
     isnothing(outformat) || (cmd = `$cmd --outformat $outformat`)
 
