@@ -9,7 +9,7 @@ function cmalign(
     exe = infernal_binary("cmalign")
     cmd = `$exe`
     glob && (cmd = `$cmd -g`)
-    notrunc && (cmd = `$cmd --ntrunc`)
+    notrunc && (cmd = `$cmd --notrunc`)
     matchonly && (cmd = `$cmd --matchonly`)
     isnothing(informat) || (cmd = `$cmd --informat $informat`)
     isnothing(outformat) || (cmd = `$cmd --outformat $outformat`)
