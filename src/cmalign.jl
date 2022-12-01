@@ -4,7 +4,7 @@ function cmalign(
     glob::Bool=false, notrunc::Bool=false,
     informat::Opt{AbstractString}=nothing,
     outformat::Opt{AbstractString}=nothing,
-    matchonly::Bool =false
+    matchonly::Bool=false
 )
     exe = infernal_binary("cmalign")
     cmd = `$exe`
