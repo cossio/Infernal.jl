@@ -1,4 +1,4 @@
-Opt{T} = Union{Nothing,T}
+const Opt{T} = Union{Nothing,T}
 
 function infernal_binaries_dir()
     if Sys.isapple()
