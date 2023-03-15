@@ -1,10 +1,12 @@
 function cmbuild(
     msafile::AbstractString;
-    enone::Bool=false
+    enone::Bool=false,
+    informat::Opt{AbstractString} = nothing
 )
     exe = infernal_binary("cmbuild")
     cmd = `$exe`
     enone && (cmd = `$cmd --enone`)
+    isnothing(informat) || (cmd = `$cmd --informat $informat`)
 
     stdout = tempname()
     stderr = tempname()
