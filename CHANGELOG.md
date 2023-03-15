@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## Unreleased
 
+## v1.2.0
+
+- Add `informat` option to `cmbuild`.
+
 ## v1.1.1
 
 - Fix `cmalign --notrunc`.
