@@ -8,4 +8,9 @@ import ..RFAM_SEED
     @test isfile(results.cmout)
     @test isfile(results.stdout)
     @test isfile(results.stderr)
+
+    results = cmbuild(seed.out; informat="Stockholm")
+    @test isfile(results.cmout)
+    @test isfile(results.stdout)
+    @test isfile(results.stderr)
 end
