@@ -1,0 +1,1 @@
+curl -fsSL https://install.julialang.org | sh -s -- --yes
