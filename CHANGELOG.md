@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## Unreleased
 
+## 1.2.1
+
+- No changes. Register at https://github.com/cossio/CossioJuliaRegistry.
+
 ## 1.2.0
 
 - Add `informat` option to `cmbuild`.
