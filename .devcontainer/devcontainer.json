@@ -13,9 +13,9 @@
                 "ms-vscode.vscode-github-issue-notebooks",
                 "ms-vscode.hexeditor",
                 "ms-python.isort",
+                "ms-python.python",
                 "ms-toolsai.jupyter",
-                "ms-toolsai.vscode-jupyter-cell-tags",
-                "ms-python.python"
+                "ms-toolsai.vscode-jupyter-cell-tags"
             ],
             "settings": {
                 "julia.executablePath": "~/.juliaup/bin/julia"
