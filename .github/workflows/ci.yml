@@ -11,6 +11,7 @@ jobs:
       matrix:
         version:
           - '1.8'
+          - '1.9'
         os:
           - ubuntu-latest
           - macOS-latest
@@ -26,6 +27,3 @@ jobs:
       - uses: julia-actions/julia-runtest@latest
         env:
           DATADEPS_ALWAYS_ACCEPT: true  # bypass DataDeps confirmation (needed for CI)
-      - uses: julia-actions/julia-uploadcodecov@latest
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
