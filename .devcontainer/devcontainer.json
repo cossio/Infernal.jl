@@ -1,25 +1,9 @@
 {
     "image":"mcr.microsoft.com/devcontainers/universal:2",
     "postCreateCommand": "bash .devcontainer/install-dev-tools.sh",
-    "shutdownAction": "stopContainer",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "julialang.language-julia",
-                "tamasfe.even-better-toml",
-                "GitHub.vscode-github-actions",
-                "GitHub.copilot",
-                "GitHub.copilot-chat",
-                "ms-vscode.vscode-github-issue-notebooks",
-                "ms-vscode.hexeditor",
-                "ms-python.isort",
-                "ms-python.python",
-                "ms-toolsai.jupyter",
-                "ms-toolsai.vscode-jupyter-cell-tags"
-            ],
-            "settings": {
-                "julia.executablePath": "~/.juliaup/bin/julia"
-            }
-        }
-    }
+	"features": {
+		"ghcr.io/julialang/devcontainer-features/julia:1": {
+			"version": "latest"
+		}
+	}
 }
