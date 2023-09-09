@@ -1,6 +1,6 @@
 name = "Infernal"
 uuid = "4aa08641-d763-4623-9c5b-cef742500064"
-authors = ["Andrea Di Gioacchino", "Jorge Fernandez-de-Cossio-Diaz <j.cossio.diaz@gmail.com>"]
+authors = ["Andrea Di Gioacchino", "JFdCD <jfdecd@icloud.com>"]
 version = "1.2.1"
 
 [deps]
