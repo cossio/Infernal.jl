@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## Unreleased
 
+## 1.3.0
+
+- Support Infernal 1.1.5, with native MacOSX/Silicon binaries.
+
 ## 1.2.1
 
 - No changes. Register at https://github.com/cossio/CossioJuliaRegistry.
