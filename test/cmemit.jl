@@ -1,12 +1,12 @@
+import FASTX
+import Rfam
 using Test: @test, @testset
 using Infernal: cmemit, cmfetch
 using BioSequences: LongRNA
-import FASTX
-import ..CM_FILE, ..RFAM_ID
 
 @testset "cmemit" begin
     N = 17
-    cm = cmfetch(CM_FILE, RFAM_ID).out
+    cm = cmfetch(Rfam.cm(), "RF00162").out
     result = cmemit(cm; aligned=true, outformat="AFA", N)
     @test isfile(result.out)
     @test isfile(result.stdout)
