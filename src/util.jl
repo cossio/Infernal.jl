@@ -1,5 +1,3 @@
-const Opt{T} = Union{Nothing,T}
-
 function infernal_binaries_dir()
     if Sys.isapple() && Sys.ARCH === :aarch64
         return joinpath(artifact"Infernal", "infernal-1.1.5-macosx-silicon", "binaries")
@@ -12,4 +10,4 @@ function infernal_binaries_dir()
     end
 end
 
-infernal_binary(name) = joinpath(infernal_binaries_dir(), name)
+infernal_binary(name::AbstractString) = joinpath(infernal_binaries_dir(), name)

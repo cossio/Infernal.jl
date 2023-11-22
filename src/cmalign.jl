@@ -6,8 +6,7 @@ function cmalign(
     outformat::Opt{AbstractString}=nothing,
     matchonly::Bool=false
 )
-    exe = infernal_binary("cmalign")
-    cmd = `$exe`
+    cmd = `$(Infernal_jll.cmalign())`
     glob && (cmd = `$cmd -g`)
     notrunc && (cmd = `$cmd --notrunc`)
     matchonly && (cmd = `$cmd --matchonly`)

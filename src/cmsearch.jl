@@ -2,8 +2,7 @@ function cmsearch(
     cmfile::AbstractString, seqfile::AbstractString;
     toponly::Bool=false, bottomonly::Bool=false, notrunc::Bool=false
 )
-    exe = infernal_binary("cmsearch")
-    cmd = `$exe`
+    cmd = `$(Infernal_jll.cmsearch())`
 
     toponly && (cmd = `$cmd --toponly`)
     bottomonly && (cmd = `$cmd --bottomonly`)

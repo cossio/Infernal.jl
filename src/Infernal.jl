@@ -1,10 +1,13 @@
 module Infernal
 
-using Artifacts: @artifact_str
-using DataFrames: DataFrame
 import CSV
+import Infernal_jll
+using DataFrames: DataFrame
 
-include("util.jl")
+#using Artifacts: @artifact_str
+#include("util.jl")
+
+const Opt{T} = Union{Nothing,T}
 
 include("cmfetch.jl")
 include("cmalign.jl")

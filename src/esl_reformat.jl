@@ -2,8 +2,7 @@ function esl_reformat(
     format::AbstractString, seqfile::AbstractString;
     informat::Opt{AbstractString}=nothing
 )
-    exe = infernal_binary("esl-reformat")
-    cmd = `$exe`
+    cmd = `$(Infernal_jll.esl_reformat())`
     isnothing(informat) || (cmd = `$cmd --informat $informat`)
     out = tempname()
     stdout = tempname()

@@ -1,6 +1,5 @@
 function cmcalibrate(cmfile::AbstractString)
-    exe = infernal_binary("cmcalibrate")
-    cmd = `$exe`
+    cmd = `$(Infernal_jll.cmcalibrate())`
 
     stdout = tempname()
     stderr = tempname()

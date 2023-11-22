@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## Unreleased
 
+## 1.4.0
+
+- Load Infernal binaries through `Infernal_jll`, which now provides version 1.1.5 of Infernal.
+
 ## 1.3.0
 
 - Support Infernal 1.1.5, with native MacOSX/Silicon binaries.

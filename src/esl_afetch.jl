@@ -1,8 +1,7 @@
 function esl_afetch(
     msafile::AbstractString, key::AbstractString
 )
-    exe = infernal_binary("esl-afetch")
-    cmd = `$exe`
+    cmd = `$(Infernal_jll.esl_afetch())`
     out = tempname()
     stdout = tempname()
     stderr = tempname()

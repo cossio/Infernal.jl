@@ -3,8 +3,7 @@ function cmbuild(
     enone::Bool=false,
     informat::Opt{AbstractString} = nothing
 )
-    exe = infernal_binary("cmbuild")
-    cmd = `$exe`
+    cmd = `$(Infernal_jll.cmbuild())`
     enone && (cmd = `$cmd --enone`)
     isnothing(informat) || (cmd = `$cmd --informat $informat`)
 

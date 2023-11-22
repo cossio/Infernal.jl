@@ -3,8 +3,7 @@ function cmemit(
     N::Int = 10, exp::Real = 1, aligned::Bool=false,
     outformat::Opt{AbstractString}=nothing
 )
-    exe = infernal_binary("cmemit")
-    cmd = `$exe`
+    cmd = `$(Infernal_jll.cmemit())`
     aligned && (cmd = `$cmd -a`)
     isnothing(outformat) || (cmd = `$cmd --outformat $outformat`)
     out = tempname()
