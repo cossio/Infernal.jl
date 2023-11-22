@@ -1,6 +1,6 @@
 module Infernal
 
-using Pkg: @artifact_str
+using Artifacts: @artifact_str
 using DataFrames: DataFrame
 import CSV
 
