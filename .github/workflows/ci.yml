@@ -12,9 +12,11 @@ jobs:
         version:
           - '1.8'
           - '1.9'
+          - '1.10'
         os:
           - ubuntu-latest
           - macos-latest
+          - macos-14
         arch:
           - x64
     steps:
