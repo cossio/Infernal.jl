@@ -18,7 +18,7 @@ jobs:
           - macos-14
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-      - uses: julia-actions/setup-julia@780022b48dfc0c2c6b94cfee6a9284850107d037
+      - uses: julia-actions/setup-julia@5c9647d97b78a5debe5164e9eec09d653d29bd71
         with:
           version: ${{ matrix.version }}
       - uses: julia-actions/cache@824243901fb567ccb490b0d0e2483ccecde46834
