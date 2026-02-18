@@ -8,4 +8,6 @@ Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
 Aqua = "0.8"
+BioSequences = "3.5.1"
+FASTX = "2.1.7"
 Rfam = "3"
