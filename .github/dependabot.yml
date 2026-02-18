@@ -1,4 +1,5 @@
 version: 2
+enable-beta-ecosystems: true
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -6,5 +7,14 @@ updates:
       interval: "weekly"
     groups:
       all-deps:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "julia" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly"
+    groups: # uncomment to group all julia package updates into a single PR
+      all-julia-packages:
         patterns:
           - "*"
