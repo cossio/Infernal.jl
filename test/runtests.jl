@@ -4,6 +4,7 @@ Rfam.set_rfam_version("14.8")
 
 # Tests
 module aqua_tests include("aqua.jl") end
+module offline_tests include("offline.jl") end
 
 module esl_afetch_tests include("esl_afetch.jl") end
 module esl_reformat_tests include("esl_reformat.jl") end
