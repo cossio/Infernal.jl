@@ -90,8 +90,8 @@ end
         @test all(isfile, [fetched_alignment.out, fetched_alignment.stdout, fetched_alignment.stderr])
         fetched_alignment_text = read(fetched_alignment.out, String)
         @test occursin("#=GF ID hairpin", fetched_alignment_text)
-        @test occursin("seq1         GGGAAACCC", fetched_alignment_text)
-        @test occursin("#=GC SS_cons (((...)))", fetched_alignment_text)
+        @test occursin(r"(?m)^seq1\s+GGGAAACCC$", fetched_alignment_text)
+        @test occursin(r"(?m)^#=GC SS_cons\s+\(\(\(\.\.\.\)\)\)$", fetched_alignment_text)
 
         build = cmbuild(fetched_alignment.out; informat="Stockholm")
         @test all(isfile, [build.cmout, build.stdout, build.stderr, build.o, build.O])
