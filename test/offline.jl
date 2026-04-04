@@ -1,3 +1,4 @@
+import FASTX
 using Test: @test, @test_throws, @testset
 using Infernal: cmalign, cmalign_parse_sfile, cmcalibrate, cmemit, cmfetch, cmbuild,
     cmsearch, cmsearch_parse_tblout, esl_afetch, esl_reformat
@@ -103,7 +104,10 @@ end
 
         reformatted = esl_reformat("AFA", fetched_alignment.out; informat="Stockholm")
         @test all(isfile, [reformatted.out, reformatted.stdout, reformatted.stderr])
-        @test read(reformatted.out, String) == ">seq1\nGGGAAACCC\n>seq2\nGGGAAACCC\n"
+        reformatted_records = open(FASTX.FASTA.Reader, reformatted.out) do reader
+            [(String(FASTX.identifier(record)), String(FASTX.sequence(record))) for record in reader]
+        end
+        @test reformatted_records == [("seq1", "GGGAAACCC"), ("seq2", "GGGAAACCC")]
 
         emitted = cmemit(fetched_model.out; N=default_emit_count, exp=default_emit_exp)
         @test all(isfile, [emitted.out, emitted.stdout, emitted.stderr, emitted.tfile])
