@@ -3,8 +3,11 @@
 
 Emit example sequences from the covariance model in `cmfile`.
 
-Returns a named tuple with the emitted sequences, a trace file, and captured
-command output.
+Returns a named tuple with keys:
+- `out`: path to the emitted sequences file.
+- `tfile`: path to the trace file.
+- `stdout`: path to captured standard output.
+- `stderr`: path to captured standard error.
 
 # Example
 
