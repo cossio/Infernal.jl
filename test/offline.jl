@@ -26,10 +26,6 @@ GGGAAACCC
     return fasta
 end
 
-fasta_sequences(path::AbstractString) = filter!(
-    !isempty, [strip(line) for line in eachline(path) if !startswith(line, '>')]
-)
-
 @testset "offline parsing" begin
     mktempdir() do tempdir
         sfile = joinpath(tempdir, "cmalign.sfile")
@@ -82,6 +78,13 @@ end
     mktempdir() do tempdir
         stockholm = write_simple_stockholm(tempdir)
         fasta = write_simple_fasta(tempdir)
+        fasta_sequences(path::AbstractString) = filter!(
+            !isempty, [strip(line) for line in eachline(path) if !startswith(line, '>')]
+        )
+        default_emit_count = 3
+        default_emit_exp = 1.5
+        aligned_emit_count = 2
+        aligned_emit_exp = 2
 
         fetched_alignment = esl_afetch(stockholm, "hairpin")
         @test all(isfile, [fetched_alignment.out, fetched_alignment.stdout, fetched_alignment.stderr])
@@ -102,17 +105,20 @@ end
         @test all(isfile, [reformatted.out, reformatted.stdout, reformatted.stderr])
         @test read(reformatted.out, String) == ">seq1\nGGGAAACCC\n>seq2\nGGGAAACCC\n"
 
-        emitted = cmemit(fetched_model.out; N=3, exp=1.5)
+        emitted = cmemit(fetched_model.out; N=default_emit_count, exp=default_emit_exp)
         @test all(isfile, [emitted.out, emitted.stdout, emitted.stderr, emitted.tfile])
         emitted_sequences = fasta_sequences(emitted.out)
-        @test length(emitted_sequences) == 3
+        @test length(emitted_sequences) == default_emit_count
         @test all(seq -> length(seq) == 9, emitted_sequences)
         @test all(seq -> all(in("ACGU"), seq), emitted_sequences)
 
-        emitted_aligned = cmemit(fetched_model.out; N=2, exp=2, aligned=true, outformat="AFA")
+        emitted_aligned = cmemit(
+            fetched_model.out;
+            N=aligned_emit_count, exp=aligned_emit_exp, aligned=true, outformat="AFA"
+        )
         @test all(isfile, [emitted_aligned.out, emitted_aligned.stdout, emitted_aligned.stderr, emitted_aligned.tfile])
         emitted_aligned_sequences = fasta_sequences(emitted_aligned.out)
-        @test length(emitted_aligned_sequences) == 2
+        @test length(emitted_aligned_sequences) == aligned_emit_count
         @test all(seq -> length(seq) == 9, emitted_aligned_sequences)
         @test all(seq -> all(in("ACGU"), seq), emitted_aligned_sequences)
 
