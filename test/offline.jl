@@ -99,7 +99,7 @@ end
 
         fetched_model = cmfetch(build.cmout, "hairpin")
         @test all(isfile, [fetched_model.out, fetched_model.stdout, fetched_model.stderr])
-        @test occursin("NAME     hairpin", read(fetched_model.out, String))
+        @test occursin(r"^NAME\s+hairpin\b"m, read(fetched_model.out, String))
 
         reformatted = esl_reformat("AFA", fetched_alignment.out; informat="Stockholm")
         @test all(isfile, [reformatted.out, reformatted.stdout, reformatted.stderr])
