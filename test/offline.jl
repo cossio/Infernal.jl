@@ -110,7 +110,7 @@ end
         emitted_sequences = fasta_sequences(emitted.out)
         @test length(emitted_sequences) == default_emit_count
         @test all(seq -> length(seq) == 9, emitted_sequences)
-        @test all(seq -> all(in("ACGU"), seq), emitted_sequences)
+        @test all(seq -> all(c -> c in "ACGU", seq), emitted_sequences)
 
         emitted_aligned = cmemit(
             fetched_model.out;
@@ -120,7 +120,7 @@ end
         emitted_aligned_sequences = fasta_sequences(emitted_aligned.out)
         @test length(emitted_aligned_sequences) == aligned_emit_count
         @test all(seq -> length(seq) == 9, emitted_aligned_sequences)
-        @test all(seq -> all(in("ACGU"), seq), emitted_aligned_sequences)
+        @test all(seq -> all(c -> c in "ACGU", seq), emitted_aligned_sequences)
 
         aligned = cmalign(
             fetched_model.out, fasta;
