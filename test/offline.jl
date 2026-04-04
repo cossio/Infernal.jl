@@ -79,7 +79,7 @@ end
         stockholm = write_simple_stockholm(tempdir)
         fasta = write_simple_fasta(tempdir)
         fasta_sequences(path::AbstractString) = filter!(
-            !isempty, [strip(line) for line in eachline(path) if !startswith(line, '>')]
+            !isempty, [strip(line) for line in eachline(path) if !startswith(line, ">")]
         )
         default_emit_count = 3
         default_emit_exp = 1.5
