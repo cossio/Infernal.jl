@@ -1,3 +1,26 @@
+"""
+    cmalign(cmfile, seqfile; glob=false, notrunc=false, informat=nothing,
+            outformat=nothing, matchonly=false)
+
+Align sequences in `seqfile` against the covariance model stored in `cmfile`.
+
+Returns a named tuple containing the main alignment output and auxiliary files:
+
+- `out`: alignment produced by `cmalign -o`
+- `stdout`: command standard output
+- `stderr`: command standard error
+- `tfile`: tabular trace information
+- `sfile`: per-sequence summary file
+
+# Example
+
+```julia
+using Infernal: cmalign
+
+result = cmalign("/path/to/model.cm", "/path/to/sequences.fasta"; outformat="Stockholm")
+alignment = read(result.out, String)
+```
+"""
 function cmalign(
     cmfile::AbstractString,
     seqfile::AbstractString;
@@ -23,6 +46,20 @@ function cmalign(
     return (; out, stdout, stderr, tfile, sfile)
 end
 
+"""
+    cmalign_parse_sfile(path)
+
+Parse a `cmalign --sfile` summary file into a `DataFrame`.
+
+# Example
+
+```julia
+using Infernal: cmalign, cmalign_parse_sfile
+
+result = cmalign("/path/to/model.cm", "/path/to/sequences.fasta")
+summary = cmalign_parse_sfile(result.sfile)
+```
+"""
 function cmalign_parse_sfile(path::AbstractString)
     csv = CSV.File(
         path; delim=' ', ignorerepeated=true, comment="#",

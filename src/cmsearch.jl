@@ -1,3 +1,26 @@
+"""
+    cmsearch(cmfile, seqfile; toponly=false, bottomonly=false, notrunc=false)
+
+Search the sequences in `seqfile` with the covariance model `cmfile`.
+
+Returns a named tuple with the main report, Stockholm alignment output, tabular
+summary output, and captured command streams:
+
+- `out`: main `cmsearch` report
+- `stdout`: command standard output
+- `stderr`: command standard error
+- `A`: alignment output produced with `-A`
+- `tblout`: tabular summary produced with `--tblout`
+
+# Example
+
+```julia
+using Infernal: cmsearch
+
+result = cmsearch("/path/to/model.cm", "/path/to/sequences.fasta"; toponly=true)
+hits = read(result.tblout, String)
+```
+"""
 function cmsearch(
     cmfile::AbstractString, seqfile::AbstractString;
     toponly::Bool=false, bottomonly::Bool=false, notrunc::Bool=false
@@ -23,6 +46,20 @@ function cmsearch(
     return (; out, stdout, stderr, A, tblout)
 end
 
+"""
+    cmsearch_parse_tblout(tblout)
+
+Parse a `cmsearch --tblout` file into a `DataFrame`.
+
+# Example
+
+```julia
+using Infernal: cmsearch, cmsearch_parse_tblout
+
+result = cmsearch("/path/to/model.cm", "/path/to/sequences.fasta")
+table = cmsearch_parse_tblout(result.tblout)
+```
+"""
 function cmsearch_parse_tblout(tblout::AbstractString)
     csv = CSV.File(
         tblout; delim=' ', ignorerepeated=true, comment="#",

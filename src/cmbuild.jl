@@ -1,3 +1,25 @@
+"""
+    cmbuild(msafile; enone=false, informat=nothing)
+
+Build a covariance model from the multiple sequence alignment file `msafile`.
+
+Returns a named tuple with the generated covariance model and captured outputs:
+
+- `cmout`: generated covariance model file
+- `stdout`: command standard output
+- `stderr`: command standard error
+- `o`: main textual report written by `cmbuild -o`
+- `O`: annotated alignment output written by `cmbuild -O`
+
+# Example
+
+```julia
+using Infernal: cmbuild
+
+result = cmbuild("/path/to/alignment.sto"; informat="Stockholm")
+cm_text = read(result.cmout, String)
+```
+"""
 function cmbuild(
     msafile::AbstractString;
     enone::Bool=false,
