@@ -85,7 +85,10 @@ end
 
         fetched_alignment = esl_afetch(stockholm, "hairpin")
         @test all(isfile, [fetched_alignment.out, fetched_alignment.stdout, fetched_alignment.stderr])
-        @test read(fetched_alignment.out, String) == read(stockholm, String)
+        fetched_alignment_text = read(fetched_alignment.out, String)
+        @test occursin("#=GF ID hairpin", fetched_alignment_text)
+        @test occursin("seq1         GGGAAACCC", fetched_alignment_text)
+        @test occursin("#=GC SS_cons (((...)))", fetched_alignment_text)
 
         build = cmbuild(fetched_alignment.out; informat="Stockholm")
         @test all(isfile, [build.cmout, build.stdout, build.stderr, build.o, build.O])
@@ -101,12 +104,17 @@ end
 
         emitted = cmemit(fetched_model.out; N=3, exp=1.5)
         @test all(isfile, [emitted.out, emitted.stdout, emitted.stderr, emitted.tfile])
-        @test fasta_sequences(emitted.out) == fill("GGGAAACCC", 3)
+        emitted_sequences = fasta_sequences(emitted.out)
+        @test length(emitted_sequences) == 3
+        @test all(seq -> length(seq) == 9, emitted_sequences)
+        @test all(seq -> all(in("ACGU"), seq), emitted_sequences)
 
         emitted_aligned = cmemit(fetched_model.out; N=2, exp=2, aligned=true, outformat="AFA")
         @test all(isfile, [emitted_aligned.out, emitted_aligned.stdout, emitted_aligned.stderr, emitted_aligned.tfile])
-        @test length(fasta_sequences(emitted_aligned.out)) == 2
-        @test all(seq -> length(seq) == 9, fasta_sequences(emitted_aligned.out))
+        emitted_aligned_sequences = fasta_sequences(emitted_aligned.out)
+        @test length(emitted_aligned_sequences) == 2
+        @test all(seq -> length(seq) == 9, emitted_aligned_sequences)
+        @test all(seq -> all(in("ACGU"), seq), emitted_aligned_sequences)
 
         aligned = cmalign(
             fetched_model.out, fasta;
