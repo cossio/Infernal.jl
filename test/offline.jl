@@ -79,9 +79,9 @@ end
     mktempdir() do tempdir
         stockholm = write_simple_stockholm(tempdir)
         fasta = write_simple_fasta(tempdir)
-        fasta_sequences(path::AbstractString) = filter!(
-            !isempty, [strip(line) for line in eachline(path) if !startswith(line, ">")]
-        )
+        read_fasta_sequences(path::AbstractString) = open(FASTA.Reader, path) do reader
+            [String(sequence(record)) for record in reader]
+        end
         default_emit_count = 3
         default_emit_exp = 1.5
         aligned_emit_count = 2
@@ -111,9 +111,8 @@ end
 
         emitted = cmemit(fetched_model.out; N=default_emit_count, exp=default_emit_exp)
         @test all(isfile, [emitted.out, emitted.stdout, emitted.stderr, emitted.tfile])
-        emitted_sequences = fasta_sequences(emitted.out)
+        emitted_sequences = read_fasta_sequences(emitted.out)
         @test length(emitted_sequences) == default_emit_count
-        @test all(!isempty, emitted_sequences)
         @test all(seq -> all(c -> c in "ACGU", seq), emitted_sequences)
         @test all(seq -> 1 <= length(seq) <= 200, emitted_sequences)
 
@@ -122,10 +121,10 @@ end
             N=aligned_emit_count, exp=aligned_emit_exp, aligned=true, outformat="AFA"
         )
         @test all(isfile, [emitted_aligned.out, emitted_aligned.stdout, emitted_aligned.stderr, emitted_aligned.tfile])
-        emitted_aligned_sequences = fasta_sequences(emitted_aligned.out)
+        emitted_aligned_sequences = read_fasta_sequences(emitted_aligned.out)
         @test length(emitted_aligned_sequences) == aligned_emit_count
-        @test all(!isempty, emitted_aligned_sequences)
         @test all(seq -> all(c -> c in "ACGU", seq), emitted_aligned_sequences)
+        @test all(seq -> 1 <= length(seq) <= 200, emitted_aligned_sequences)
 
         aligned = cmalign(
             fetched_model.out, fasta;
